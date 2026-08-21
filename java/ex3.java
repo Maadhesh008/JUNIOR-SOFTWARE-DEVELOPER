@@ -13,6 +13,12 @@ public class ex3 {
            sum=sum+i;
            
         }
-        System.out.print(n+"="+(sum+n));
+        System.out.println(n+"="+(sum+n));
+       double r=Math.pow(2,4);
+        System.out.println(r);
+        System.out.println(n+"="+(sum+n));
+        if(x>=-9223372036854775808L && x<=9223372036854775807L)
+        {
+        }
     } 
 }

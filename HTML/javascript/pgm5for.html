@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function example()
+        {
+            var n1=parseInt(document.getElementById("t1").value);
+            var n2=parseInt(document.getElementById("t2").value);
+            var res=" ";
+            var sum=0;
+            for(var i=n1;i<=n2;i++)
+        {
+            
+            sum=sum+i;
+            if(i==n2)
+            res=res+i+"";
+            else
+            res=res+i+"+";
+        }
+        document.getElementById("ans").innerHTML=res+"="+sum;
+        }
+    </script>
+</head>
+<body>
+    <h1><center>FOR LOOP</center></h1>
+    <input type="text" id="t1" placeholder="ENTER STARTING NUMBER">
+    <br>
+    <input type="text" id="t2" placeholder="ENTER ENDING NUMBER">
+    <br>
+    <input type="button" value="ANSWER" onclick="example()">
+    <div id="ans"></div>
+</body>
+</html>

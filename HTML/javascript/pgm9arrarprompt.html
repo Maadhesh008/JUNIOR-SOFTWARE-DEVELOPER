@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAY PROMPT</title>
+    <script type="text/javascript">
+        function show()
+        {
+            var size=parseInt(document.getElementById("t1").value);
+            var arr=new Array(size);
+
+            for(var i=0;i<size;i++)
+        {
+            arr[i]=parseInt(prompt("ENTER ARRAY VALUE OF INDEX "+i));
+        }
+        for(var j=0;j<size;j++)
+        {
+            document.write("<br> VALUE"+j+"="+arr[j]);
+        }
+        var big=arr[0];
+        // TO FIND BIGGEST NUMBER IN AN ARRAY
+        for (var k=0;k<size;k++)
+        {
+            if(big<arr[k])
+            big=arr[k];
+        }
+       document.write("<br> BIGGEST NUMBER="+big);
+     //SUM OF ARRAY
+     var sum=0;
+     for(var l=0;l<size;l++)
+     {
+        sum= sum + arr[l];
+     }
+     document.write("<br>  SUM OF ARRAY= "+sum);
+
+    
+     //sum of even numbers in an array
+     var sum1=0
+     var sum2=0
+     var even=0
+     var odd=0
+     for(var m=0;m<size;m++)
+     {
+        if(arr[m]%2==0)
+     {
+        sum1=sum1+arr[m];
+        even++;
+     }
+     else
+     {
+        sum2=sum2+arr[m];
+        odd++;
+     }
+     }
+      document.write("<br> NUMBER OF EVEN NO IN AN ARRAY="+even);
+      document.write("<br> NUMBER OF ODD NO IN AN ARRAY="+odd);
+     document.write("<br> SUM OF EVEN NO IN AN ARRAY="+sum1);
+     document.write("<br> SUM OF ODD NO IN AN ARRAY="+sum2);
+
+
+
+
+     
+      
+
+   
+    var temp = 0;
+
+for (var n = 0; n < size - 1; n++) {
+    for (var j = 0; j < size - n - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+            temp = arr[j + 1];
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
+        }
+    }
+}
+
+for (var o = 0; o < size; o++) {
+    document.write("<br>VALUE " + o + " = " + arr[o]);
+}
+        }  
+    </script>
+</head>
+<body>
+<input type="number" id="t1" placeholder="ENTER THE ARRAY SIZE">
+<br>
+<input type="button" value="LIST OF ARRAY" onclick="show()">
+<div id="res"></div>
+    
+</body>
+</html>

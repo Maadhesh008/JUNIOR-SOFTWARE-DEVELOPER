@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+     function fun1()
+     {
+         var s1=parseInt(document.getElementById("m1").value);
+         var s2=parseInt(document.getElementById("m2").value);
+        var s3=parseInt(document.getElementById("m3").value);
+         var s4=parseInt(document.getElementById("m4").value);
+        var s5=parseInt(document.getElementById("m5").value);
+       var add=s1+s2+s3+s4+s5;
+       var per=add/5.0;
+        var status="";
+        var grade="";
+        if(s1>34 && s2>34 && s3>34 && s4>34 && s5>34 )
+        {      
+         status="pass";
+         if(per>=90)
+         grade="OUTSTANDING";
+        else if(per>=80)
+        grade="EXCELLENT";
+        else if(per>=70)
+        grade="VERY GOOD";
+        else if(per>=60)
+        grade="GOOD";
+        else if(per>=50)
+        grade="FAIR";
+        else
+        grade="PADIDA MOTTA";
+        }
+        else
+        {
+          status="FAIL";
+          grade="NO GRADE";
+        }
+        if(status=="pass")
+     {
+        document.getElementById("res1").innerHTML="<font color='green'>TOTAL:  "+add+"</font>";
+        document.getElementById("res2").innerHTML="<font color='green'>PERCENTAGE:  "+per+"</font>";
+        document.getElementById("res3").innerHTML="<font color='green'>STATUS:  "+status+"</font>";
+        document.getElementById("res4").innerHTML="<font color='green'>GRADE:  "+grade+"</font>";
+     }
+        else
+     {
+        document.getElementById("res1").innerHTML="<font color='red'>TOTAL:  "+add+"</font>";
+        document.getElementById("res2").innerHTML="<font color='red'>PERCENTAGE:  "+per+"</font>";
+        document.getElementById("res3").innerHTML="<font color='red'>STATUS:  "+status+"</font>";
+        document.getElementById("res4").innerHTML="<font color='red'>GRADE:  "+grade+"</font>";
+     }
+     }
+     function colors()
+     {
+        document.getElementById("myimg").src="./images/"+event.target.value+".jpg";
+     }
+
+
+    </script>
+</head>
+<body>
+    <input type="text" id="m1" placeholder="ENTER YOUR MARK 1">
+    <br>
+    <input type="text" id="m2" placeholder="ENTER YOUR MARK 2">
+    <br>
+    <input type="text" id="m3" placeholder="ENTER YOUR MARK 3">
+    <br>
+    <input type="text" id="m4" placeholder="ENTER YOUR MARK 4">
+    <br>
+    <input type="text" id="m5" placeholder="ENTER YOUR MARK 5">
+    <br>
+    <input type="button" value="RESULT" onclick="fun1()">
+    <div id="res1"></div>
+    <div id="res2"></div>
+    <div id="res3"></div>
+    <div id="res4"></div>
+
+    <h1>CHANGE BACKGROUND COLOUR</h1>
+    <label>SELECT COLOR:</label><br>
+    <pre>
+    <input type="radio" onchange="colors()" name="COL" value="swaninathan">SWAMINATHAN
+    <input type="radio" onchange="colors()" name="COL" value="maruthachalan">MARUTHAACHALAN
+    <input type="radio" onchange="colors()" name="COL" value="annamaliyar">ANNAMALAIYAAR
+    <input type="radio" onchange="colors()" name="COL" value="maduraiveeran">MADURAI VEERAN
+    </pre>
+    <center>
+        <img src="" id="myimg" width="30%">
+    </center>
+</body>
+</html>

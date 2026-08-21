@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAC-3 Extra Challenge</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  /* Requirement 1 & 2: Controls and Grid Layout */
+  .controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #eef2f5;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  
+  #grid-container {
+    display: grid;
+    /* The columns are dynamically updated in JS */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+  }
+  
+  .column {
+    border: 2px dashed #aaa;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: background-color 0.3s;
+    cursor: grab;
+  }
+  
+  .column:active {
+    cursor: grabbing;
+  }
+  
+  .edit-panel {
+    display: none;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  input[type="number"], input[type="text"] {
+    width: 60px;
+    padding: 4px;
+  }
+  
+  input[type="text"] {
+    width: 120px;
+  }
+  
+  button {
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Requirement 2: Set Number of Columns -->
+<div class="controls">
+  <label><strong>Number of Columns: </strong></label>
+  <button id="btn-minus">-</button>
+  <input type="number" id="col-count" value="3" min="1">
+  <button id="btn-plus">+</button>
+</div>
+
+<!-- Requirement 1: Multi-column grid -->
+<div id="grid-container">
+  <!-- Columns will be injected here by JavaScript -->
+</div>
+
+<script>
+  // Initial state data
+  let columns = [
+    { id: 1, title: 'Column 1', color: '#ffffff', order: 1 },
+    { id: 2, title: 'Column 2', color: '#ffffff', order: 2 },
+    { id: 3, title: 'Column 3', color: '#ffffff', order: 3 }
+  ];
+
+  const gridContainer = document.getElementById('grid-container');
+  const colCountInput = document.getElementById('col-count');
+
+  // Renders the columns based on the current state array
+  function renderGrid() {
+    // Sort columns by their order property
+    columns.sort((a, b) => a.order - b.order);
+
+    // Clear grid and set the dynamic CSS grid column count
+    gridContainer.innerHTML = '';
+    gridContainer.style.gridTemplateColumns = `repeat(${columns.length}, 1fr)`;
+
+    columns.forEach((col, index) => {
+      const colDiv = document.createElement('div');
+      colDiv.className = 'column';
+      colDiv.style.backgroundColor = col.color;
+      
+      // Requirement 3: Drag and Drop Setup
+      colDiv.draggable = true;
+      colDiv.dataset.index = index;
+
+      colDiv.innerHTML = `
+        <h3>${col.title}</h3>
+        
+        <!-- Requirement 3: Reorder via text box -->
+        <div style="margin-bottom: 10px;">
+          <label>Order:</label> 
+          <input type="number" class="order-input" value="${index + 1}" min="1" max="${columns.length}">
+        </div>
+        
+        <!-- Requirement 4: Edit Button -->
+        <button onclick="toggleEdit(${col.id})">Edit Column</button>
+
+        <!-- Requirement 4: Edit Panel (Title & Background Color) -->
+        <div class="edit-panel" id="edit-${col.id}">
+          <label>Title:</label><br>
+          <input type="text" id="title-input-${col.id}" value="${col.title}">
+          <br><br>
+          <label>Background Color:</label><br>
+          <input type="color" id="color-input-${col.id}" value="${col.color}">
+          <br><br>
+          <button onclick="saveEdit(${col.id})">Save Changes</button>
+        </div>
+      `;
+
+      // Event listeners for Drag and Drop
+      colDiv.addEventListener('dragstart', handleDragStart);
+      colDiv.addEventListener('dragover', handleDragOver);
+      colDiv.addEventListener('drop', handleDrop);
+
+      // Event listener for Order Input
+      const orderInput = colDiv.querySelector('.order-input');
+      orderInput.addEventListener('change', (e) => updateOrder(col.id, e.target.value));
+
+      gridContainer.appendChild(colDiv);
+    });
+  }
+
+  // --- Logic to Add/Remove Columns ---
+  function updateColumnCount(newCount) {
+    if (newCount < 1) return;
+    colCountInput.value = newCount;
+
+    if (newCount > columns.length) {
+      const diff = newCount - columns.length;
+      for (let i = 0; i < diff; i++) {
+        const newId = Date.now() + i; 
+        columns.push({ id: newId, title: `Column ${columns.length + 1}`, color: '#ffffff', order: columns.length + 1 });
+      }
+    } else if (newCount < columns.length) {
+      columns = columns.slice(0, newCount); // Remove extras
+    }
+    renderGrid();
+  }
+
+  document.getElementById('btn-plus').addEventListener('click', () => updateColumnCount(columns.length + 1));
+  document.getElementById('btn-minus').addEventListener('click', () => updateColumnCount(columns.length - 1));
+  colCountInput.addEventListener('change', (e) => updateColumnCount(parseInt(e.target.value)));
+
+  // --- Logic to Edit Title and Color ---
+  window.toggleEdit = (id) => {
+    const panel = document.getElementById(`edit-${id}`);
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  };
+
+  window.saveEdit = (id) => {
+    const titleInput = document.getElementById(`title-input-${id}`).value;
+    const colorInput = document.getElementById(`color-input-${id}`).value;
+
+    const col = columns.find(c => c.id === id);
+    if (col) {
+      col.title = titleInput;
+      col.color = colorInput;
+    }
+    renderGrid();
+  };
+
+  // --- Logic to Reorder (via Input box) ---
+  function updateOrder(id, newOrder) {
+    const targetIndex = parseInt(newOrder) - 1;
+    const colIndex = columns.findIndex(c => c.id === id);
+
+    if (targetIndex >= 0 && targetIndex < columns.length) {
+      const [movedCol] = columns.splice(colIndex, 1);
+      columns.splice(targetIndex, 0, movedCol);
+      // Re-index all orders
+      columns.forEach((c, idx) => c.order = idx + 1);
+    }
+    renderGrid();
+  }
+
+  // --- Logic to Reorder (via Drag and Drop) ---
+  let draggedIndex = null;
+
+  function handleDragStart(e) {
+    draggedIndex = +e.target.dataset.index;
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault(); // Necessary to allow dropping
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    const dropTarget = e.target.closest('.column');
+    if (!dropTarget) return;
+
+    const targetIndex = +dropTarget.dataset.index;
+
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
+      const [movedCol] = columns.splice(draggedIndex, 1);
+      columns.splice(targetIndex, 0, movedCol);
+      columns.forEach((c, idx) => c.order = idx + 1);
+      renderGrid();
+    }
+  }
+
+  // Initialize the app on page load
+  renderGrid();
+</script>
+</body>
+</html>

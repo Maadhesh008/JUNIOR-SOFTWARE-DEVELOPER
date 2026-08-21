@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var a=10;
+        var b=20;
+        var c=a+b;
+ document.write("<h1> welcome to javascript </h1>");
+        document.write("<br> <h2> A=10  B=20 <br>Total: "+c);
+        var d=a+b*c;
+        console.log(d);
+document.write("<h1> diff bw var let and constant </h1>");
+/* variable and let----->  we can change the value.
+constant----->    we cant change the value.
+
+variable-------> it is a global(we can use in and out the function anywhere).
+led & const-----> it is a local scope.*/
+
+// var global+assign
+if(true)
+{
+     var a=10;
+}
+console.log(" A value:"+a);
+document.write(" A IS THE GLOBAL VARIABLE WORKING OUTSIDE THE FN  'A':"+a);
+
+
+// let is not a global(local+assign)
+if(true)
+{
+    let e=10;
+}
+console.log(" A value:"+d);
+document.write(" A IS THE GLOBAL VARIABLE WORKING OUTSIDE THE FN  'A':"+e); //value of 'a' cant print ouside coz it is local
+
+
+
+//constant is a local(cant assign)
+
+if(true)
+{
+    let f=10;
+}
+console.log(" A value:"+f);
+document.write(" A IS THE GLOBAL VARIABLE WORKING OUTSIDE THE FN  'A':"+f);
+f++;
+</script>
+</head>
+<body>
+    
+</body>
+</html>

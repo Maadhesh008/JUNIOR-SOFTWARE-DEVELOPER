@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.internal css</title>
+    <style type="text/css">
+        
+    h1,h2,h3,h4
+    {
+        color:lightgreen;
+        background-color: black;
+        
+        text-align:center;
+        font-size:15px;
+        border-radius:100px; 
+        border: 7px solid pink;
+        text-transform: uppercase;
+    }
+    #img1
+    {
+        width:500px;
+        height:auto;
+        box-shadow: 10px 10px 20px 5px hwb(0 0% 100% / 0.998);
+
+    }
+    button
+    {
+        margin-right: 35px;
+        margin-top: 15px;
+        padding: 8px;
+        background-color: rgb(168, 222, 168);
+
+    }
+    #b1:hover,#b2:hover,#b3:hover
+    {
+        
+        background-color: green;   
+       
+    }
+    #b4
+    {
+        cursor: pointer;
+    }
+    
+    img
+    {
+        width:300px;
+        height:300px;
+        
+        position:relative;
+        animation-name: kalvi;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-delay:0s;
+        animation-direction: alternate;
+    }
+    @keyframes kalvi
+    {
+        frame
+        {
+            left:0px;
+        }
+        to
+        {
+            left: 200px;
+         
+            
+        }
+    }
+    </style>
+
+
+</head>
+<body> 
+    <!--hover is used to change the color of the button when the cursor reaches the button-->
+    <!--cursor pointer is used to change the arrowmark of the cursor to the hand-->
+    <!--box shadow: x-axis y-axis blur  padding   color;    -->
+    <h1>Maadhesh</h1>
+    <h2>shreekanth</h2>
+    <h3>Nishanth</h3>
+    <h4>jeeva</h4>
+    <img  id="img1" src="1.jpg"><br>
+    <button id="b1">BUTTON1</button>
+    <button id="b2">BUTTON2</button>
+    <button id="b3">BUTTON3</button>
+    <button id="b4">BUTTON4</button>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script type="text/javascript">
+    function show()
+    {
+        var name=document.getElementById("t1").value;
+        switch(name)
+        {
+            case "swaminathan":
+                    document.getElementById("img").src="./images/swaminathan.jpg";
+                    break;
+            case "maruthachalan":
+                    document.getElementById("img").src="./images/maruthachalan.jpg";
+                    break;
+            case "annamalaiyar":
+                    document.getElementById("img").src="./images/annamalaiyar.jpg";
+                    break;
+            case "maduraiveeran":
+                    document.getElementById("img").src="./images/maduraiveeran.jpg";
+                    break;
+            default:
+                  document.getElementById("img").src="./images/maruthachalan.jpg";
+                    break;
+
+        }
+    }
+
+
+ </script>
+</head>
+<body>
+    <input type="text" id="t1" placeholder="ENTER THE  GOD NAME" onblur="show()">
+    <br>
+    <img src="" id="img" width="70%" align="center">
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    function prime1()
+    {
+        var a=document.getElementById("t1").value;
+        var flag=0;
+        for(var i=2;i<a;i++)
+    {
+        if(a%i==0)
+    {
+        flag++;
+    }
+    
+    }
+    if(flag>0)
+    {
+        document.getElementById("res1").innerHTML="NOT A PRIME NUMBER";
+    }
+    else
+        document.getElementById("res1").innerHTML=" PRIME NUMBER";
+    }
+    function sum()
+    {
+        var a=parseInt(document.getElementById("t1").value);
+        var b=0
+        var sum=0;
+        while(a!=0)
+    {
+        b=a%10;
+        a=Math.floor(a/10);
+        sum=sum+b; 
+           
+       
+     }
+      document.getElementById("res2").innerHTML=sum;
+      
+
+    }
+    function even()
+    {
+          var a=parseInt(document.getElementById("t1").value);
+          var c=0;
+          while(a!=0)
+          {
+            var b=a%10;
+            a=Math.floor(a/10);
+            var d=" ";
+            
+            if(b%2==0)
+          {
+             c=(c*10)+b ;
+             
+          }
+          }
+           document.getElementById("res3").innerHTML=c;
+    }
+    function evensum()
+    {
+          var a=parseInt(document.getElementById("t1").value);
+          var c=0;
+          var sum=0;
+          while(a!=0)
+          {
+            var b=a%10;
+            a=Math.floor(a/10);
+            var d=" ";
+            
+            if(b%2==0)
+          {
+             c=(c*10)+b
+             sum=sum+b ;
+             
+          }
+          }
+           document.getElementById("res4").innerHTML=sum;
+    }
+    </script>
+</head>
+<body>
+    <input  type="number" id="t1" placeholder="ENTER THE NUMBER"><br>
+    <input type="button" value="PRIME" onclick="prime1()"><br>
+    <input type="button" value="SUM OF DIGITS" onclick="sum()"><br>
+    <input type="button" value="DISP EVEN NUMBERS" onclick="even()"><br>
+    <input type="button" value="SUM OF EVEN NUMBERS" onclick="evensum()">
+    <div id="res1"></div>
+    <div id="res2"></div>
+    <div id="res3"></div>
+    <div id="res4"></div>
+
+    
+</body>
+</html>

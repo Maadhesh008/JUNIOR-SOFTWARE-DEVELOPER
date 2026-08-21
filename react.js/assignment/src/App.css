@@ -1,0 +1,210 @@
+.App {
+  text-align: center;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin: 0;
+  color: #222;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls label {
+  font-weight: bold;
+}
+
+.controls input {
+  width: 70px;
+  margin-left: 8px;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.controls button {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  border: none;
+  border-radius: 6px;
+  background: #1976d2;
+  color: pink;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #125ca3;
+}
+
+.instruction {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 15px;
+  align-items: start;
+}
+
+.column {
+  min-height: 400px;
+  padding: 15px;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+  cursor: grab;
+  transition: 0.2s;
+}
+
+.column:active {
+  cursor: grabbing;
+}
+
+.column:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.edit-button {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.order {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.order input {
+  width: 55px;
+  padding: 6px;
+}
+
+.drop-area {
+  height: 180px;
+  margin-top: 20px;
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #777;
+}
+
+.editor {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+.editor label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.editor input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.color-button {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #777;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+/*.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/
