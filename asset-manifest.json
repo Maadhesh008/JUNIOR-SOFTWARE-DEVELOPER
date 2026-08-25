@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/css/main.e6c13ad2.css",
+    "main.js": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/js/main.543c2c43.js",
+    "static/js/453.4bba39a9.chunk.js": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/js/453.4bba39a9.chunk.js",
+    "index.html": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/index.html",
+    "main.e6c13ad2.css.map": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/css/main.e6c13ad2.css.map",
+    "main.543c2c43.js.map": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/js/main.543c2c43.js.map",
+    "453.4bba39a9.chunk.js.map": "/JUNIOR-SOFTWARE-DEVELOPER/react.js/myproject/static/js/453.4bba39a9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.543c2c43.js"
+  ]
+}
