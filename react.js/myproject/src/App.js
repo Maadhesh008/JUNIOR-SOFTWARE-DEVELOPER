@@ -1,155 +1,42 @@
 import React from 'react'
-
+import axios from 'axios'
 function App() {
-  var mark1=40;
-  var mark2=30;
-  var a=1023;
-  var b=234;
-  var d=75;
-  var res="fail"
+  const[city,setCity]=React.useState("")
+  const[result,setResult]=React.useState("")
+  const cityfun=(event)=>{
+    setCity(event.target.value)
+  }
+  const show=async ()=>{
+    const apiurl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=53704c684b61746f1d2f76eecdfdb680`
+    await axios.get(apiurl).then((res)=>{
+      setResult(res.data)
+      console.log(res.data)
+    }).catch((err)=>{
+      setResult(err.response.data)
+      console.log(err.response.data)
+    })
+    
 
-  var c=90;
+ // console.log(apiurl)
+  }
   return (
     <div>
-      
-      <h1>1.SIMPLE IF STATEMENT RESULT:</h1>
-      <h2>mark:{mark1}</h2>
-      <h2>{mark1>34 && "PASS"}</h2>
-      <h2>{mark1<=34 && "FAIL"}</h2>
-      <h1>{"============================================================"}</h1>
-     
-     <h1>2. IF  ELSE STATEMENT RESULT:</h1>
-     <h2>mark:{mark2}</h2>
-     <h2>{(mark2>34 && "PASS") ||("FAIL")}</h2>
-     <h1>{"============================================================"}</h1>
-    
-     <h1>3.GREATEST AMONG TWO NUMBERS</h1>
-     <h2>MARK1:{a}   MARK2:{b}</h2>
-     <h2>{(a>b && a)|| b } IS GREATEST NUMBER</h2>
-     <h1>{"============================================================"}</h1>
-
-     <h1>4.FIND THE NUMBER IS EVEN OR ODD</h1>
-     <h2>NUMER:{c}</h2>
-     <h2>{c} IS {( c%2===0 && "EVEN") || "ODD"} NUMBER</h2>
-     <h1>{"============================================================"}</h1>
-
-    <h1>5.IF ELSE IF STATEMENT OR ELSE IF LADDER</h1>
-    <h2>NUMBER:{c}</h2>
-    <h2>{c} {(c>0 && "is positive") ||(c<0 && "is negative") || "is zero"}</h2>
-    <h1>{"============================================================"}</h1>
-    
-    <h1>5.NESTED IF</h1>
-    <h2>MARK:{d}</h2>
-    <h2>RESULT:{res}</h2> 
-    <h2>{d}  is  { (res==="pass" && ((d>=85 && "OUTSTANDING") || 
-    (d>=75 && "EXCELLENT") || 
-    (d>=65 && "VERY GOOD") || 
-    (d>=55 && "GOOD") || 
-    "FAIR"))|| "NO GRADE" }</h2>  
-    <h1>{"============================================================"}</h1> 
-
-    
-    
-    
+      <h1><center>Weather Report for all over world</center></h1>
+      <h1><center>By Using Entering City Name</center></h1>
+      <h2><center>Developed By Maadhesh B</center></h2>
+      <hr size="10" color='black'></hr><br></br>
+      <input type="text" value={city} onChange={(e)=>cityfun(e)} name="city" placeholder='Enter City Name'></input><br></br><br></br>
+      <input type="button" value="Get Weather Report" onClick={show}></input><br></br>
+      <br></br><hr size="10" color='black'></hr>
+      {result!==null && result.cod===200 &&<><h2>Country - city : {result.sys.country}-{result.name}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Weather : {result.weather[0].main}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Description : {result.weather[0].description}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Wind Speed : {result.wind.speed}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Temperature : {result.main.temp}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Humidity : {result.main.humidity}</h2></>}
+      {result!==null && result.cod===200 &&<><h2>Pressure : {result.main.pressure}</h2></>}
+      {result!==null && result.cod==="404" &&<font color="red" ><h1>City : {result.message}</h1></font>}
     </div>
   )
 }
-
 export default App
-
-
-
-
-/* import './App.css'
-import React from 'react'
-import myimg from './images/maruthachalan.jpg'
-
-function App() {
-  return (
-    <div align="center">
-      <img src={myimg} width='50%' alt="not found"></img>
-      
-    </div>
-  )
-}
-
-export default App
-
-
-
-
-
-
-
-
-
-
-/* REACT EXPRESSION */
-/*var App=()=>{
-  var a=10
-  var b=20
-  var c=30
-  return(
-    <>
-    <h1>ADDITION OF TWO NUMBERS</h1>
-    <h2>A VALUE:{a}</h2>
-    <h2>B VALUE:{b}</h2>
-    <h2>C VALUE:{c}</h2>
-    <h2>TOTAL VALUE:{a+b+c}</h2>
-    </>
-  )
-}
-export default App;
-
-
-
-/*
-import React from "react";
-
-class App extends React.Component
-{
-  render()
-  {
-    return(
-      <>
-      <h1>WELCOME TO CLASS COMPONENTS</h1>
-      <h2>WELCOME TO CLASS COMPONENTS</h2>
-      <h3>WELCOME TO CLASS COMPONENTS</h3>
-      
-      
-      </>
-    )
-  }
-}
-export default App;
-
-
-
-/*
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-*/
