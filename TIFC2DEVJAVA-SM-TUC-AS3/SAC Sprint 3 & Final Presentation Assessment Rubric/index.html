@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprint 3 Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">TIFC2DEVJAVA-SM-TUC-AS3</p>
+      <h1>Sprint 3 Task Manager</h1>
+      <p class="intro">Your tasks are saved automatically. Select any task to edit it.</p>
+      <nav class="page-links" aria-label="Project links">
+        <a href="tests.html">Run unit tests</a>
+      </nav>
+    </header>
+
+    <section class="workspace" aria-label="Task manager">
+      <form id="taskForm" class="task-form" novalidate>
+        <div class="form-heading">
+          <div>
+            <p class="eyebrow">Task details</p>
+            <h2 id="formHeading">Add a task</h2>
+          </div>
+          <span id="formMode" class="mode-badge">SAVE</span>
+        </div>
+        <div id="formMessage" class="form-message" role="alert" aria-live="assertive"></div>
+
+        <label for="taskTitle">Task name</label>
+        <input id="taskTitle" name="title" type="text" maxlength="80" required>
+
+        <label for="taskDescription">Description</label>
+        <textarea id="taskDescription" name="description" rows="4" maxlength="240" required></textarea>
+
+        <label for="taskAssignee">Assigned to</label>
+        <input id="taskAssignee" name="assignee" type="text" maxlength="60" required>
+
+        <label for="taskDueDate">Due date</label>
+        <input id="taskDueDate" name="dueDate" type="date" required>
+
+        <label for="taskStatus">Status</label>
+        <select id="taskStatus" name="status" required>
+          <option value="">Choose a status</option>
+          <option value="TODO">TODO</option>
+          <option value="IN PROGRESS">IN PROGRESS</option>
+          <option value="REVIEW">REVIEW</option>
+          <option value="DONE">DONE</option>
+        </select>
+
+        <div class="form-actions">
+          <button id="saveButton" type="submit">Save task</button>
+          <button id="cancelButton" class="cancel-button" type="button" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <section class="task-panel" aria-labelledby="taskListHeading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Current work</p>
+            <h2 id="taskListHeading">Task list</h2>
+          </div>
+          <span id="taskCount" class="task-count">0 tasks</span>
+        </div>
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

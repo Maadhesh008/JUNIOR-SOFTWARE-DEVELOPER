@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprint 2 Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">TIFC2DEVJAVA-SM-TUC-AS3</p>
+      <h1>Sprint 2 Task Manager</h1>
+      <p class="intro">Create, review, and remove tasks from the current sprint.</p>
+    </header>
+
+    <section class="workspace" aria-label="Task manager">
+      <form id="taskForm" class="task-form">
+        <h2>Add a task</h2>
+        <label for="taskTitle">Task title</label>
+        <input id="taskTitle" name="title" type="text" maxlength="80" required>
+
+        <label for="taskDescription">Description</label>
+        <textarea id="taskDescription" name="description" rows="4" maxlength="240" required></textarea>
+
+        <label for="taskAssignee">Assigned to</label>
+        <input id="taskAssignee" name="assignee" type="text" maxlength="60" required>
+
+        <label for="taskDueDate">Due date</label>
+        <input id="taskDueDate" name="dueDate" type="date" required>
+
+        <label for="taskStatus">Status</label>
+        <select id="taskStatus" name="status" required>
+          <option value="TODO">TODO</option>
+          <option value="IN PROGRESS">IN PROGRESS</option>
+          <option value="REVIEW">REVIEW</option>
+          <option value="DONE">DONE</option>
+        </select>
+
+        <button type="submit">Add task</button>
+      </form>
+
+      <section class="task-panel" aria-labelledby="taskListHeading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Current work</p>
+            <h2 id="taskListHeading">Task list</h2>
+          </div>
+          <span id="taskCount" class="task-count">0 tasks</span>
+        </div>
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

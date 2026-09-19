@@ -7,6 +7,7 @@ document.getElementById('taskForm').addEventListener('submit', function(e) {
   const assigned = document.getElementById('assignedTo').value.trim();
   const due = document.getElementById('dueDate').value;
   const status = document.getElementById('status').value;
+  
 
   // Validation
   if (!name || !desc || !assigned || !due || !status) {
