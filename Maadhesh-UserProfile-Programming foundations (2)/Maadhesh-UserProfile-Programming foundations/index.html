@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Google Sheets Sync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Profile Management</h2>
+    <p class="subtitle">Interact with Google Sheets using asynchronous GET and POST requests.</p>
+
+    <!-- POST form -->
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Jane Doe">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+      </div>
+      <button type="submit" id="submitBtn">Send to Sheet (POST)</button>
+    </form>
+
+    <div id="statusMessage" class="status-box hidden"></div>
+
+    <hr>
+
+    <!-- GET Controls and Table -->
+    <div class="table-controls">
+      <h3>Synced Profiles</h3>
+      <button id="refreshBtn" type="button">Refresh Profiles (GET)</button>
+    </div>
+
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td colspan="3" class="placeholder">Click "Refresh Profiles" or submit data to load rows.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
