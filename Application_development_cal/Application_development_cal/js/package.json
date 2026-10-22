@@ -1,0 +1,12 @@
+{
+  "name": "application-development-assessment",
+  "version": "1.0.0",
+  "description": "End of Module Assessment - Unit Testing with Jest",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
